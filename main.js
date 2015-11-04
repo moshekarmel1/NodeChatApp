@@ -51,10 +51,6 @@ $(function() {
     }
   }
 
-  $('#who').on('click', function(){
-      socket.emit('whos here');
-  });
-
   // Sends a chat message
   function sendMessage () {
     var message = $inputMessage.val();
@@ -180,14 +176,6 @@ $(function() {
     });
   }
 
-  function showUsers(data){
-      console.log(data.usernames);
-      addParticipantsMessage(data);
-      $.each(data.usernames, function(i, name){
-          $messages.append($('<li>').text(name).css('color', getUsernameColor(i)).addClass('log'));
-      });
-  }
-
   // Gets the color of a username through our hash function
   function getUsernameColor (username) {
     // Compute hash code
@@ -241,7 +229,7 @@ $(function() {
   socket.on('login', function (data) {
     connected = true;
     // Display the welcome message
-    var message = "Welcome to The Plymouth Chat – ";
+    var message = "Welcome to Socket.IO Chat – ";
     log(message, {
       prepend: true
     });
@@ -274,9 +262,5 @@ $(function() {
   // Whenever the server emits 'stop typing', kill the typing message
   socket.on('stop typing', function (data) {
     removeChatTyping(data);
-  });
-
-  socket.on('show whos here', function(data){
-    showUsers(data);
   });
 });

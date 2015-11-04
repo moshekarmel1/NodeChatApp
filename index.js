@@ -28,7 +28,13 @@ io.on('connection', function (socket) {
             message: data
         }); 
     });
-
+    
+    socket.on('whos here', function(data){
+        socket.emit('show whos here', {
+            usernames: usernames,
+            numUsers: numUsers
+        });
+    });
     // when the client emits 'add user', this listens and executes
     socket.on('add user', function (username) {
         // we store the username in the socket session for this client

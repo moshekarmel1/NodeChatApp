@@ -148,3 +148,14 @@ ul {
   right: 0;
   width: 100%;
 }
+
+.button {
+  background-color: white;
+  outline: none;
+  border: 10px solid #000;
+   width: 50px;
+   font-weight: bold;
+   position:absolute;
+   top:0;
+   right:0;
+}
